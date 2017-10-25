@@ -110,3 +110,12 @@ Below is a fully functioning example.
    `/usr/share/lxc/templates/lxc-<template_name>`. Note: This gets passed as
    ARGV to the template command. Ensure you have an array of strings, as
    a single string with spaces probably won't work. Defaults to `[]`.
+
+-  `create_options` (array of strings) - Options to pass to `lxc-create`. For
+   instance, you can specify a custom LXC container configuration file with
+   `["-f", "/path/to/lxc.conf"]`. See `man 1 lxc-create` for available options.
+
+-  `start_options` (array of strings) - Options to pass to `lxc-start`. For
+   instance, you override parameters from the LXC container configuration file
+   via `["--define", "KEY=VALUE"]`. See `man 1 lxc-start` for available
+   options.
