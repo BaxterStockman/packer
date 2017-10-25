@@ -1,13 +1,16 @@
 {
   "variables": {
     "template_name": "debian",
-    "template_parameters": "SUITE=jessie"
+    "template_parameters": "SUITE=jessie",
+    "container_name": "packer-lxc"
   },
   "builders": [
     {
       "type": "lxc",
       "name": "lxc-{{user `template_name`}}",
       "template_name": "{{user `template_name`}}",
+      "container_name": "{{user `container_name`}}",
+      "create_options": [ "-f", "{{user `init_config`}}" ],
       "config_file": "/usr/share/lxc/config/{{user `template_name`}}.common.conf",
       "template_environment_vars": [ "{{user `template_parameters`}}" ]
     }
